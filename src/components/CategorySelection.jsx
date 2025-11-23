@@ -19,7 +19,7 @@ const CATEGORIES = [
         subCategories: [
             { id: 'aptitude', label: '나에게 딱 맞는 직업은?' },
             { id: 'success', label: '언제쯤 성공할 수 있을까?' },
-            { id: 'wealth', label: '나의 재물운은 어떨까?' },
+            { id: 'business', label: '창업이나 내 사업을 해도 될까?' },
             { id: 'change', label: '이직하기 좋은 시기는?' }
         ]
     },
@@ -32,6 +32,39 @@ const CATEGORIES = [
             { id: 'personality', label: '내가 모르는 나의 숨겨진 성격은?' },
             { id: 'challenge', label: '내가 극복해야 할 과제는?' },
             { id: 'talent', label: '나의 타고난 재능은?' }
+        ]
+    },
+    {
+        id: 'money',
+        label: '금전 / 재물',
+        icon: '💰',
+        subCategories: [
+            { id: 'fortune', label: '나의 타고난 재물복은?' },
+            { id: 'investment', label: '나에게 맞는 투자 방식은?' },
+            { id: 'rich', label: '언제쯤 큰 돈을 만질 수 있을까?' },
+            { id: 'loss', label: '돈을 모으기 위해 주의할 점은?' }
+        ]
+    },
+    {
+        id: 'relationship',
+        label: '대인관계',
+        icon: '🤝',
+        subCategories: [
+            { id: 'conflict', label: '직장 동료와의 갈등 해결법은?' },
+            { id: 'noble', label: '나에게 귀인이 되어줄 사람은?' },
+            { id: 'friends', label: '친구들과의 관계는 어떻게 될까?' },
+            { id: 'family', label: '가족과의 갈등은 언제 해결될까?' }
+        ]
+    },
+    {
+        id: 'study',
+        label: '학업 / 시험',
+        icon: '📚',
+        subCategories: [
+            { id: 'exam', label: '이번 시험 합격운은?' },
+            { id: 'method', label: '나에게 맞는 공부 방법은?' },
+            { id: 'abroad', label: '유학이나 해외 연수가 도움이 될까?' },
+            { id: 'cert', label: '자격증 취득 운은 어떨까?' }
         ]
     }
 ];

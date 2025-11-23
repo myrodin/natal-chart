@@ -230,9 +230,17 @@ label {
   }
 
   .form-row {
-    grid-template-columns: 1fr;
-    /* Stack inputs on mobile */
+    grid-template-columns: 1fr 1fr;
+    /* Keep side-by-side */
     gap: 0.5rem;
+    /* Reduce gap to fit better */
+  }
+
+  input,
+  select {
+    padding: 0.6rem;
+    /* Slightly reduce padding on mobile */
+    font-size: 0.95rem;
   }
 
   h1 {
