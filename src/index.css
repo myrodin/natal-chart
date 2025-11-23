@@ -230,9 +230,9 @@ label {
   }
 
   .form-row {
-    grid-template-columns: 1fr;
-    /* Force stack on mobile */
-    gap: 1rem;
+    grid-template-columns: 1fr 1fr;
+    /* Restore side-by-side */
+    gap: 0.5rem;
   }
 
   input,
@@ -240,6 +240,19 @@ label {
     padding: 0.75rem;
     /* Restore padding */
     font-size: 1rem;
+  }
+
+  /* Specific adjustment for date/time inputs on mobile to prevent overlapping */
+  input[type="date"],
+  input[type="time"] {
+    padding: 0.6rem 0.2rem;
+    /* Minimize horizontal padding */
+    font-size: 0.85rem;
+    /* Smaller font to fit content */
+    text-align: center;
+    /* Center text */
+    min-width: 0;
+    /* Allow shrinking if needed */
   }
 
   h1 {
