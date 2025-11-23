@@ -16,7 +16,7 @@ body {
   font-family: var(--font-main);
   background-color: var(--color-bg);
   color: var(--color-text);
-  background-image: 
+  background-image:
     radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.15) 0%, transparent 40%),
     radial-gradient(circle at 90% 80%, rgba(168, 85, 247, 0.15) 0%, transparent 40%);
   min-height: 100vh;
@@ -33,7 +33,9 @@ body {
   box-sizing: border-box;
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   font-weight: 700;
   letter-spacing: -0.02em;
   margin-top: 0;
@@ -98,7 +100,8 @@ button {
   background: rgba(255, 255, 255, 0.15);
 }
 
-input, select {
+input,
+select {
   width: 100%;
   padding: 0.75rem;
   margin-bottom: 1rem;
@@ -111,7 +114,8 @@ input, select {
   transition: border-color 0.3s;
 }
 
-input:focus, select:focus {
+input:focus,
+select:focus {
   outline: none;
   border-color: var(--color-primary);
   box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
@@ -125,8 +129,15 @@ label {
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .category-grid {
@@ -146,7 +157,8 @@ label {
   transition: all 0.3s;
 }
 
-.category-card:hover, .category-card.selected {
+.category-card:hover,
+.category-card.selected {
   background: rgba(99, 102, 241, 0.1);
   border-color: var(--color-primary);
   transform: translateY(-2px);
@@ -175,4 +187,58 @@ label {
   color: var(--color-text);
   transform: translateX(-2px);
   box-shadow: none;
+}
+
+.result-container {
+  background: rgba(0, 0, 0, 0.2);
+  padding: 1.5rem;
+  border-radius: 1rem;
+  margin-bottom: 2rem;
+  border: 1px solid var(--color-glass-border);
+  min-height: 200px;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.action-buttons button {
+  flex: 1;
+  margin-top: 0;
+  /* Reset margin-top from btn-primary */
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 600px) {
+  #root {
+    padding: 1rem;
+  }
+
+  .card {
+    padding: 1.5rem;
+  }
+
+  .result-container {
+    padding: 1rem;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+    /* Stack inputs on mobile */
+    gap: 0.5rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  /* Make buttons stack on very small screens if needed, or just keep them side-by-side but tighter */
+  /* For now, let's keep them side-by-side but ensure they look balanced */
 }

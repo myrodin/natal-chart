@@ -70,14 +70,7 @@ const ResultDisplay = ({ data, onRetry }) => {
                 </p>
             </div>
 
-            <div style={{
-                background: 'rgba(0,0,0,0.2)',
-                padding: '1.5rem',
-                borderRadius: '1rem',
-                marginBottom: '2rem',
-                border: '1px solid var(--color-glass-border)',
-                minHeight: '200px'
-            }}>
+            <div className="result-container">
                 <h3 style={{ color: 'var(--color-accent)', fontSize: '1.1rem', marginBottom: '1rem' }}>
                     Q. {data.question}
                 </h3>
@@ -113,12 +106,12 @@ const ResultDisplay = ({ data, onRetry }) => {
                 </div>
             </div>
 
-            <div style={{ display: 'flex', gap: '1rem' }}>
-                <button className="btn-secondary" onClick={onRetry} style={{ flex: 1 }}>
+            <div className="action-buttons">
+                <button className="btn-secondary" onClick={onRetry}>
                     다시 하기
                 </button>
                 {!loading && !error && (
-                    <button className="btn-primary" onClick={handleShare} style={{ flex: 1, marginTop: 0 }}>
+                    <button className="btn-primary" onClick={handleShare}>
                         공유하기 🔗
                     </button>
                 )}
