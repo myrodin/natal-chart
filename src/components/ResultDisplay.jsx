@@ -23,6 +23,43 @@ const ResultDisplay = ({ data, onRetry }) => {
         fetchAnalysis();
     }, [data]);
 
+    const handleShare = async () => {
+        // 개인정보 마스킹 처리
+        let safeResult = result;
+        if (data.birthDate) {
+            safeResult = safeResult.replace(new RegExp(data.birthDate, 'g'), '****-**-**');
+            // YYYY년 MM월 DD일 형식도 처리 시도 (간단한 변환)
+            const [y, m, d] = data.birthDate.split('-');
+            const koreanDate = `${y}년 ${parseInt(m)}월 ${parseInt(d)}일`;
+            safeResult = safeResult.replace(new RegExp(koreanDate, 'g'), '****년 **월 **일');
+        }
+        if (data.birthPlace) {
+            safeResult = safeResult.replace(new RegExp(data.birthPlace, 'g'), 'OOO');
+        }
+
+        const shareText = `[Cosmic Insight 🔮]\n\nQ. ${data.question}\n\n${safeResult}\n\n나의 네이탈 차트 분석해보기 👉 ${window.location.href}`;
+
+        if (navigator.share) {
+            try {
+                await navigator.share({
+                    title: 'Cosmic Insight - 네이탈 차트 분석',
+                    text: shareText,
+                    url: window.location.href,
+                });
+            } catch (err) {
+                console.log('Error sharing:', err);
+            }
+        } else {
+            try {
+                await navigator.clipboard.writeText(shareText);
+                alert('결과가 클립보드에 복사되었습니다!');
+            } catch (err) {
+                console.error('Failed to copy:', err);
+                alert('복사에 실패했습니다.');
+            }
+        }
+    };
+
     return (
         <div className="card">
             <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
@@ -65,6 +102,7 @@ const ResultDisplay = ({ data, onRetry }) => {
                     </div>
                 )}
 
+
                 <div style={{ marginTop: '2rem', borderTop: '1px solid var(--color-glass-border)', paddingTop: '1rem', fontSize: '0.9rem', color: 'var(--color-text-muted)' }}>
                     <p>
                         입력하신 정보:<br />
@@ -75,9 +113,16 @@ const ResultDisplay = ({ data, onRetry }) => {
                 </div>
             </div>
 
-            <button className="btn-secondary" onClick={onRetry} style={{ width: '100%' }}>
-                다시 하기
-            </button>
+            <div style={{ display: 'flex', gap: '1rem' }}>
+                <button className="btn-secondary" onClick={onRetry} style={{ flex: 1 }}>
+                    다시 하기
+                </button>
+                {!loading && !error && (
+                    <button className="btn-primary" onClick={handleShare} style={{ flex: 1, marginTop: 0 }}>
+                        공유하기 🔗
+                    </button>
+                )}
+            </div>
 
             <style>{`
         @keyframes spin {
