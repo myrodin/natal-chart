@@ -1,0 +1,16 @@
+User-agent: *
+Allow: /
+Disallow: /assets/
+Disallow: /*.env
+
+Sitemap: https://myrodin.github.io/natal-chart/sitemap.xml
+
+# Popular bots
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Yeti
+Allow: /

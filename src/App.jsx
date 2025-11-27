@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import CategorySelection from './components/CategorySelection';
 import InputForm from './components/InputForm';
 import ResultDisplay from './components/ResultDisplay';
+import { updateMetaTags } from './utils/metaTags';
 
 function App() {
   const [step, setStep] = useState('category'); // category, input, result
@@ -17,6 +18,7 @@ function App() {
 
   const handleCategorySelect = (categoryData) => {
     setData(prev => ({ ...prev, ...categoryData }));
+    updateMetaTags(categoryData);
     setStep('input');
   };
 
@@ -27,6 +29,7 @@ function App() {
 
   const handleRetry = () => {
     setStep('category');
+    updateMetaTags(null); // Reset to default meta tags
     setData({
       main: '',
       sub: '',
